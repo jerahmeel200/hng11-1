@@ -19,6 +19,7 @@ header {
     max-width: 1200px;
     margin: 0 auto;
     padding: 20px;
+    text-align: center;
 }
 
 h1, h2 {
@@ -31,18 +32,9 @@ h2 {
     margin-bottom: 20px;
 }
 
-.profile-info {
-    display: flex;
-    align-items: center;
-    margin-bottom: 20px;
-}
+ 
 
-.profile-pic {
-    border-radius: 50%;
-    margin-right: 20px;
-    width: 150px;
-    height: 150px;
-}
+ 
 
 .text-info p {
     font-size: 1.2em;
@@ -98,7 +90,8 @@ font-weight:800;
 #current-day{
     font-weight:700;
 }
-.text-info p{
+.profile-info{
+    text-align: center;
     font-weight:600 ;
     font-family:'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
     color: rgb(43, 42, 42);
