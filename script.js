@@ -1,21 +1,31 @@
-window.onload = function() {
-    updateTime();
-    updateDay();
-    setInterval(updateTime, 1000); // Update time every second
-};
+const currDay = document.querySelector("#current-day");
+const currTime = document.querySelector("#current-time");
+
+const dayArray = ["Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"];
 
 function updateTime() {
-    const now = new Date();
-    const hours = String(now.getUTCHours()).padStart(2, '0');
-    const minutes = String(now.getUTCMinutes()).padStart(2, '0');
-    const seconds = String(now.getUTCSeconds()).padStart(2, '0');
-    const utcTime = `${hours}:${minutes}:${seconds}`;
-    document.getElementById('current-time').innerText = utcTime;
+  const today = new Date();
+  const day = today.getDay();
+  const hours = today.getUTCHours();
+  const minutes = today.getUTCMinutes();
+  const seconds = today.getUTCSeconds();
+  const milliseconds = today.getUTCMilliseconds();
+
+  const dayString = dayArray[day];
+  const time = hours.toString().padStart(2, '0') + ":" + 
+               minutes.toString().padStart(2, '0') + ":" + 
+               seconds.toString().padStart(2, '0') + ":" + 
+               milliseconds.toString().padStart(3, '0');
+
+  currDay.innerText = dayString;
+  currDay.setAttribute("data-test-id", dayString);
+
+  currTime.innerText = time;
+  currTime.setAttribute("data-test-id", time);
 }
 
-function updateDay() {
-    const days = ["Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"];
-    const now = new Date();
-    const currentDay = days[now.getUTCDay()];
-    document.getElementById('current-day').innerText = currentDay;
-}
+// Update the time every 100 milliseconds
+setInterval(updateTime, 100);
+
+// Initial call to set the time immediately
+updateTime();
